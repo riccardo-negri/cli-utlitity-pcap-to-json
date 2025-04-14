@@ -4,5 +4,24 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-netgauze-pcap-reader = "0.6.1" # simple PCAP reader
-serde = "1.0.219" #  a generic serialization/deserialization framework
+netgauze-flow-pkt = "0.6.2"
+netgauze-pcap-reader = "0.6.2" # simple PCAP reader
+netgauze-flow-service = "0.6.2"
+netgauze-bmp-pkt = { version = "0.6.2", features = ["codec"] }
+serde = {version = "1.0.219", features = ["derive"]} #  a generic serialization/deserialization framework
+serde_json = "1.0"
+chrono = { version = "0.4", default-features = false, features = [
+    "std",
+    "serde",
+    "clock",
+] }
+
+pcap-parser = { version = "0.16", features = ["data"]}
+bytes = "1.10.1"
+tokio-util = { version = "0.7.13", features = ["codec"] }
+tokio = {version = "1.44", features = ["full", "rt-multi-thread"]}
+async-channel = { version = "2.3" }
+clap = {version = "4.5", features = ["default", "derive"]}
+
+[profile.release]
+debug = true
